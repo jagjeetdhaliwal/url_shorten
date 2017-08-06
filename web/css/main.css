@@ -1,0 +1,23 @@
+nav ul a {
+    color: #444;
+}
+
+.url_card {
+    background: white;
+    padding: 5px;
+    border: 1px solid #cbcbcb;
+    margin: 5px 0;
+}
+
+.error-label {
+    display: none;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+    position: absolute;
+    bottom: 0px;
+}
+
+.form-message {
+	display: none;
+}

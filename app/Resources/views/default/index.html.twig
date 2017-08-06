@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="body">
+        <nav class="white" role="navigation">
+        </nav>
+    </header>
+    <section class="body">
+        <div class="container" id="shorten">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 center">
+                        <h4 class="contact-h4">Get Shareable links forever for FREE</h4>
+                        {{ form_start(form, {'attr': {'id': 'url_form'}}) }}                            
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    {{ form_widget(form.url) }}
+                                    {{ form_label(form.url, 'Paste a URL to shorten it') }}
+                                    <div id="url_error" class="error-label">Please enter a valid URL</div>
+                                </div>
+                            </div>
+                            {{ form_widget(form.save, {'attr': {'class': 'btn waves-effect waves-light'}}) }}
+                        {{ form_end(form) }}
+                        <div class="form-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="recent" class="container">
+        </div>
+        <div class="container">
+            <h4>History</h4>
+            {% for url in historic_urls %}
+                {% include 'url.html.twig' with {'source' : url.shortUrl, 'destination': url.destinationUrl} %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/main.css') }}"  media="screen,projection"/>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/shorten.js') }}"></script>
+{% endblock %}
+
+
